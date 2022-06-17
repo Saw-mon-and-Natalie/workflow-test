@@ -15,7 +15,7 @@ module.exports = async ({ github, context }, tagName) => {
     });
   } catch (err) {
     console.log(`⛔ tag: ${tagName} doesn't exist. Creating the tag`);
-
+    console.log(err)
     try {
       await github.rest.git.createRef({
         owner: context.repo.owner,
