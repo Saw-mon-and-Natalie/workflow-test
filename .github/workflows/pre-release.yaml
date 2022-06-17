@@ -18,11 +18,8 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-            const getTag = require('./.github/scripts/get-tag.js')
-            await getTag({github, context}, 'pre-release')
-            await getTag({github, context}, 'pre-release-02')
-            const createTag = require('./.github/scripts/create-tag.js')
-            await createTag({github, context}, 'pre-release')
+            const createOrUpdateTag = require('./.github/scripts/create-or-update-ref.js')
+            await createOrUpdateTag({github, context}, 'pre-release')
 
       - name: Update pre-release
         uses: softprops/action-gh-release@v1
