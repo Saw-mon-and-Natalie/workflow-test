@@ -3,7 +3,7 @@ module.exports = async ({ github, context }, tagName) => {
     const a = await github.rest.git.getRef({
       owner: context.repo.owner,
       repo: context.repo.repo,
-      ref: `refs/tags/${tagName}`,
+      ref: `tags/${tagName}`,
     });
     console.log(a)
   } catch (err) {
