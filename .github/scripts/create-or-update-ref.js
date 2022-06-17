@@ -1,6 +1,6 @@
 module.exports = async ({ github, context }, tagName) => {
   try {
-    await github.rest.getRef({
+    await github.rest.get.getRef({
       owner: context.repo.owner,
       repo: context.repo.repo,
       ref: `tags/${tagName}`,
