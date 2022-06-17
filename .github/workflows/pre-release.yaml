@@ -17,7 +17,7 @@ jobs:
       - name: Create pre-release tag
         uses: actions/github-script@v6
         with:
-          scripts: |
+          script: |
             const createTag = require('./.github/scripts/create-tag.js')
             await createTag({github, context}, 'pre-release')
 
