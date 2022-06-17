@@ -18,6 +18,9 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const getTag = require('./.github/scripts/get-tag.js')
+            await getTag({github, context}, 'pre-release')
+            await getTag({github, context}, 'pre-release-02')
             const createTag = require('./.github/scripts/create-tag.js')
             await createTag({github, context}, 'pre-release')
 
