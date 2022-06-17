@@ -1,0 +1,33 @@
+name: Build Pre-release
+
+on:
+  push:
+
+jobs:
+  build:
+    name: Setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Create pre-release tag
+        uses: actions/github-script@v6
+        with:
+          scripts: |
+            const createTag = require('./.github/scripts/create-tag.js')
+            await createTag({github, context}, 'pre-release')
+
+      - name: Update pre-release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: 'Pre-release'
+          tag_name: 'pre-release'
+          prerelease: true
+          body: ''
+          files: |
+            message
+
